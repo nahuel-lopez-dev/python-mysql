@@ -19,54 +19,54 @@ cursor = conexion.cursor()
 
 ############### Creando las tablas ###############
 # Guardando cada query en una variable, por buenas prácticas
-crear_tabla_estados = """
-CREATE TABLE estados (
-    id_estado INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    nombre_estado VARCHAR(50),
-    fundacion DATE,
-    longitud FLOAT,
-    latitud FLOAT
+crear_tabla_tabla1 = """
+CREATE TABLE tabla1 (
+    id_tabla1 INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(25),
+    fecha DATE,
+    long FLOAT,
+    lat FLOAT
 );
 """
 
-crear_tabla_poblaciones = """
-CREATE TABLE poblacion (
-    id_poblacion INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    nombre_estado VARCHAR(50) NOT NULL,
+crear_tabla_tabla2 = """
+CREATE TABLE tabla2 (
+    id_tabla2 INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(25) NOT NULL,
     anio INT,
     cantidad INT,
-    id_estado INT,
-    FOREIGN KEY (id_estado) REFERENCES estados(id_estado)
+    id_tabla1 INT,
+    FOREIGN KEY (id_tabla1) REFERENCES tabla1(id_tabla1)
 );
 """
 
-crear_tabla_muertes = """
-CREATE TABLE muertes (
-    id_muertes INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    nombre_estado VARCHAR(50),
+crear_tabla_tabla3 = """
+CREATE TABLE tabla3  (
+    id_tabla3 INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(25),
     anio INT,
     cantidad INT,
-    id_poblacion INT,
-    FOREIGN KEY (id_poblacion) REFERENCES poblacion(id_poblacion)
+    id_tabla2 INT,
+    FOREIGN KEY (id_tabla2) REFERENCES tabla2(id_tabla2)
 );
 """
 
-crear_tabla_residentes_men65 = """
-CREATE TABLE residentes_men65 (
-    id_residentes_men65 INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    nombre_estado VARCHAR(50),
+crear_tabla_tabla4 = """
+CREATE TABLE tabla4 (
+    id_tabla4 INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(25),
     anio INT,
     cantidad INT,
-    id_poblacion INT,
-    FOREIGN KEY (id_poblacion) REFERENCES poblacion(id_poblacion)
+    id_tabla2 INT,
+    FOREIGN KEY (id_tabla2) REFERENCES tabla2(id_tabla2)
 );
 """
 
 # Ejecutando las querys
-cursor.execute(crear_tabla_estados)
-cursor.execute(crear_tabla_poblaciones)
-cursor.execute(crear_tabla_muertes)
-cursor.execute(crear_tabla_residentes_men65)
+cursor.execute(crear_tabla_tabla1)
+cursor.execute(crear_tabla_tabla2)
+cursor.execute(crear_tabla_tabla3)
+cursor.execute(crear_tabla_tabla4)
 
 # Guardando los cambios
 conexion.commit()

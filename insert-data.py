@@ -18,60 +18,60 @@ conexion=mysql.connector.connect(
 cursor = conexion.cursor()
 
 ############# Insertando los datos ##############
-
-insertar_datos_estados = """
-INSERT INTO estados (id_estado, nombre_estado, fundacion, longitud, latitud) 
+# forma de fecha para mysql: año-mes-dia
+insertar_datos_tabla1 = """
+INSERT INTO tabla1 (id_tabla1, nombre, fecha, long, lat) 
 VALUES 
-    (1, 'Alabama', '1819-12-14', -86.829534, 33.258882), 
-    (2, 'Florida', '1845-03-03', -81.463983, 27.756767), 
-    (3, 'Georgia', '1733-02-12', -83.113737, 32.329381), 
-    (4, 'South Carolina', '1776-03-26', -80.436374, 33.687439);    
+    (1, 'Fulano', '1900-12-30', 48.512995, 50.258882), 
+    (2, 'Sultano', '1900-12-30', 48.512995, 50.756767), 
+    (3, 'Mengano', '1900-12-30', 48.512995, 50.329381), 
+    (4, 'Montoto', '1900-12-30', 48.512995, 50.687439);    
 """
 
-insertar_datos_poblacion = """
-INSERT INTO poblacion (id_poblacion, nombre_estado, anio, cantidad, id_estado)
+insertar_datos_tabla2 = """
+INSERT INTO tabla2 (id_tabla2, nombre, anio, cantidad, id_tabla1)
 VALUES
-    (1, 'Alabama', 2000, 4447100, 1),
-    (2, 'Alabama', 2001, 4451493, 1),
-    (3, 'Florida', 2000, 15982378, 2),
-    (4, 'Florida', 2001, 17054000, 2),
-    (5, 'Georgia', 2000, 8186453, 3),
-    (6, 'Georgia', 2001, 8229823, 3),
-    (7, 'South Carolina', 2000, 4012012, 4),
-    (8, 'South Carolina', 2001, 4023438, 4);
+    (1, 'Fulano', 1900, 39666999, 1),
+    (2, 'Fulano', 1900, 39666999, 1),
+    (3, 'Sultano', 1900, 39666999, 2),
+    (4, 'Sultano', 1900, 39666999, 2),
+    (5, 'Mengano', 1900, 39666999, 3),
+    (6, 'Mengano', 1900, 39666999, 3),
+    (7, 'Montoto', 1900, 39666999, 4),
+    (8, 'Montoto', 1900, 39666999, 4);
 """
 
-insertar_datos_muertes = """
-INSERT INTO muertes (id_muertes, nombre_estado, anio, cantidad, id_poblacion)
+insertar_datos_tabla3 = """
+INSERT INTO tabla3 (id_tabla3, nombre, anio, cantidad, id_tabla2)
 VALUES
-    (1, 'Alabama', 2000, 10622, 1),
-    (2, 'Alabama', 2001, 15912, 2),
-    (3, 'Florida', 2000, 38103, 3),
-    (4, 'Florida', 2001, 166069, 4),
-    (5, 'Georgia', 2000, 14804, 5),
-    (6, 'Georgia', 2001, 15000, 6),
-    (7, 'South Carolina', 2000, 8581, 7),
-    (8, 'South Carolina', 2001, 9500, 8);
+    (1, 'Fulano', 1900, 15000, 1),
+    (2, 'Fulano', 1900, 15000, 2),
+    (3, 'Sultano', 1900, 15000, 3),
+    (4, 'Sultano', 1900, 15000, 4),
+    (5, 'Mengano', 1900, 15000, 5),
+    (6, 'Mengano', 1900, 15000, 6),
+    (7, 'Montoto', 1900, 15000, 7),
+    (8, 'Montoto', 1900, 15000, 8);
 """
 
-insertar_datos_residentes_men65 = """
-INSERT INTO residentes_men65 (id_residentes_men65, nombre_estado, anio, cantidad, id_poblacion)
+insertar_datos_tabla4 = """
+INSERT INTO tabla4 (id_tabla4, nombre, anio, cantidad, id_tabla4)
 VALUES
-    (1, 'Alabama', 2000, 3870598, 1),
-    (2, 'Alabama', 2001, 3880476, 2),
-    (3, 'Florida', 2000, 13237167, 3),
-    (4, 'Florida', 2001, 13548077, 4),
-    (5, 'Georgia', 2000, 7440877, 5),
-    (6, 'Georgia', 2001, 7582146, 6),
-    (7, 'South Carolina', '2000', 3535770, 7),
-    (8, 'South Carolina', '2001', 3567172, 8);
+    (1, 'Fulano', 1900, 20500, 1),
+    (2, 'Fulano', 1900, 20500, 2),
+    (3, 'Sultano', 1900, 20500, 3),
+    (4, 'Sultano', 1900, 205Fulano00, 4),
+    (5, 'Mengano', 1900, 20500, 5),
+    (6, 'Mengano', 1900, 205Sultano
+    (7, 'Montoto', '1900', 20500, 7),
+    (8, 'Montoto', '1900', 20500, 8);
 """
 
 # Ejecutando las querys
-cursor.execute(insertar_datos_estados)
-cursor.execute(insertar_datos_poblacion)
-cursor.execute(insertar_datos_muertes)
-cursor.execute(insertar_datos_residentes_men65)
+cursor.execute(insertar_datos_tabla1)
+cursor.execute(insertar_datos_tabla2)
+cursor.execute(insertar_datos_tabla3)
+cursor.execute(insertar_datos_tabla4)
 
 # Guardando los cambios
 conexion.commit()    
